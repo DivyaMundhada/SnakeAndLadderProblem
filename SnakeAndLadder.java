@@ -18,15 +18,20 @@ public class SnakeAndLadder {
 			switch (option) {
 			case no_play:
 				player_position += 0;
-				System.out.println("NO PLAY : You are at same position.");
+				System.out.println("NO PLAY : You are at same position " + player_position);
 				break;
 			case ladder:
 				player_position += roll_die;
-				System.out.println("LADDER : You moved ahead by " + roll_die);
+				if (player_position > 100) {
+					player_position -= roll_die;
+					  System.out.println("LADDER: Your need only " + (100-player_position) + " to win");
+					}
+				else
+				System.out.println("LADDER : You moved ahead by " + roll_die + ". Current Position is: " + player_position);
 				break;
 			case snake:
 				player_position -= roll_die;
-				System.out.println("SNAKE: You moved behind by " + roll_die);
+				System.out.println("SNAKE: You moved behind by " + roll_die + ". Current Position is: " + player_position);
 				if (player_position <= 0) {
 					player_position = 0;
 					System.out.println("Current position of the player in the game is: " + player_position);
