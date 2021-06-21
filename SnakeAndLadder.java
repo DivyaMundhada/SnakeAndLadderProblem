@@ -7,6 +7,7 @@ public class SnakeAndLadder {
 	public static final int win = 100;
 
 	public static void main(String[] args) {
+		int counter = 0;
 		int player_position = 0;
                 System.out.println("Welcome to Snake And Ladder Simulator.");
 
@@ -41,7 +42,9 @@ public class SnakeAndLadder {
 				System.out.println("Error occured");
 				break;
 			}
+		counter++;
 		}
 		System.out.println("You WIN at " + player_position);
+		System.out.println("Total number of times Die is Rolled: "+ counter);
 	}
 }
