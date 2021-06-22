@@ -1,4 +1,3 @@
-
 public class SnakeAndLadder {
 
 	public static final int no_play = 0;
@@ -7,44 +6,78 @@ public class SnakeAndLadder {
 	public static final int win = 100;
 
 	public static void main(String[] args) {
-		int counter = 0;
-		int player_position = 0;
-                System.out.println("Welcome to Snake And Ladder Simulator.");
+		int player1_position = 0;
+		int player2_position = 0;
 
-		while (player_position < win){
+		System.out.println("Welcome to Snake And Ladder Simulator.");
+
+		while ((player1_position < win) || (player2_position < win)) {
 
 			int option = (int) Math.floor((Math.random() * 10) % 3);
 			int roll_die = (int) Math.floor((Math.random() * 10) % 6) + 1;
 
 			switch (option) {
 			case no_play:
-				player_position += 0;
-				System.out.println("NO PLAY : You are at same position " + player_position);
+				player1_position += 0;
+				System.out.println("No Play: Player 1 position: " + player1_position);
 				break;
 			case ladder:
-				player_position += roll_die;
-				if (player_position > 100) {
-					player_position -= roll_die;
-					  System.out.println("LADDER: Your need only " + (100-player_position) + " to win");
-					}
-				else
-				System.out.println("LADDER : You moved ahead by " + roll_die + ". Current Position is: " + player_position);
-				break;
-			case snake:
-				player_position -= roll_die;
-				System.out.println("SNAKE: You moved behind by " + roll_die + ". Current Position is: " + player_position);
-				if (player_position <= 0) {
-					player_position = 0;
-					System.out.println("Current position of the player in the game is: " + player_position);
+				player1_position += roll_die;
+				if (player1_position > 100) {
+					player1_position -= roll_die;
+					System.out.println("Ladder: Player 1 position: " + player1_position);
+				} else
+					System.out.println("Ladder: Player 1 position: " + player1_position);
+				if (player1_position == win) {
+					System.out.println("Player 1 Wins");
+					System.exit(1);
 				}
 				break;
-			default:
-				System.out.println("Error occured");
+			case snake:
+				player1_position -= roll_die;
+
+				if (player1_position < 0) {
+					player1_position = 0;
+					System.out.println("Snake: Player 1 position: " + player1_position);
+				} else
+					System.out.println("Snake: Player 1 position: " + player1_position);
 				break;
+
 			}
-		counter++;
+
+			option = (int) Math.floor((Math.random() * 10) % 3);
+			roll_die = (int) Math.floor((Math.random() * 10) % 6) + 1;
+
+			switch (option) {
+			case no_play:
+				player2_position += 0;
+				System.out.println("No Play: Player 2 position: " + player2_position);
+				break;
+			case ladder:
+				player2_position += roll_die;
+				if (player2_position > 100) {
+					player2_position -= roll_die;
+					System.out.println("Ladder: Player 2 position: " + player2_position);
+				} else
+					System.out.println("Ladder: Player 2 position " + player2_position);
+				if (player2_position == win) {
+					System.out.println("Player2 Wins");
+					System.exit(1);
+				}
+				break;
+			case snake:
+				player2_position -= roll_die;
+
+				if (player2_position < 0) {
+					player2_position = 0;
+					System.out.println("Snake: Player 2 position: " + player2_position);
+				} else
+					System.out.println("Snake: Player 2 position: " + player2_position);
+				;
+
+			}
+
 		}
-		System.out.println("You WIN at " + player_position);
-		System.out.println("Total number of times Die is Rolled: "+ counter);
+
 	}
 }
